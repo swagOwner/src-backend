@@ -1,0 +1,11 @@
+GET http://localhost:8080/api/decks
+
+###
+
+POST http://localhost:8080/api/decks
+Content-Type: application/json
+
+{
+  "name": "English A1",
+  "description": "Базовая колода для слов"
+}
