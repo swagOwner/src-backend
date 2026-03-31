@@ -36,4 +36,9 @@ public class CardController {
         return cardService.review(id, request.quality());
     }
 
+    @GetMapping("/due")
+    public List<Card> getDueCards() {
+        return cardService.getDueCards();
+    }
+
 }

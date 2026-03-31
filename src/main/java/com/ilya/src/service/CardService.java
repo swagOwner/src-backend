@@ -81,5 +81,9 @@ public class CardService {
     public List<Card> getByDeckId(Long deckId) {
         return cardRepository.findByDeckId(deckId);
     }
+
+    public List<Card> getDueCards() {
+        return cardRepository.findByDueAtLessThanEqual(LocalDateTime.now());
+    }
 }
 
