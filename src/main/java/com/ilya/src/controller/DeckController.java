@@ -3,8 +3,10 @@ package com.ilya.src.controller;
 
 import com.ilya.src.dto.DeckCreateRequest;
 import com.ilya.src.dto.DeckUpdateRequest;
+import com.ilya.src.entity.Card;
 import com.ilya.src.entity.Deck;
 import com.ilya.src.repository.DeckRepository;
+import com.ilya.src.service.CardService;
 import com.ilya.src.service.DeckService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import java.util.List;
 public class DeckController {
 
     private final DeckService deckService;
+    private final CardService cardService;
 
     @GetMapping
     public List<Deck> getAll(){
@@ -42,5 +45,10 @@ public class DeckController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         deckService.delete(id);
+    }
+
+    @GetMapping("/{id}/cards")
+    public List<Card> getCardsByDeck(@PathVariable Long id) {
+        return cardService.getByDeckId(id);
     }
 }

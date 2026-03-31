@@ -77,5 +77,9 @@ public class CardService {
 
         return cardRepository.save(card);
     }
+
+    public List<Card> getByDeckId(Long deckId) {
+        return cardRepository.findByDeckId(deckId);
+    }
 }
 
