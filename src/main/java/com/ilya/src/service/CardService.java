@@ -85,5 +85,12 @@ public class CardService {
     public List<Card> getDueCards() {
         return cardRepository.findByDueAtLessThanEqual(LocalDateTime.now());
     }
+
+    public List<Card> search(String query) {
+        if (query == null || query.isBlank()) {
+            return cardRepository.findAll();
+        }
+        return cardRepository.findByFrontContainingIgnoreCaseOrBackContainingIgnoreCase(query, query);
+    }
 }
 

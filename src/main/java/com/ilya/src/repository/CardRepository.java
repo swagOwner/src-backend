@@ -11,5 +11,5 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     List<Card> findByDueAtLessThanEqual(LocalDateTime dateTime);
 
-
+    List<Card> findByFrontContainingIgnoreCaseOrBackContainingIgnoreCase(String front, String back);
 }

@@ -16,11 +16,6 @@ public class CardController {
 
     private final CardService cardService;
 
-    @GetMapping
-    public List<Card> getAll(){
-        return cardService.getAll();
-    }
-
     @GetMapping("/{id}")
     public Card getById(@PathVariable Long id) {
         return cardService.getById(id);
@@ -39,6 +34,11 @@ public class CardController {
     @GetMapping("/due")
     public List<Card> getDueCards() {
         return cardService.getDueCards();
+    }
+
+    @GetMapping
+    public List<Card> getAll(@RequestParam(required = false) String query) {
+        return cardService.search(query);
     }
 
 }
